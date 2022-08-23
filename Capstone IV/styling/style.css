@@ -1,0 +1,447 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: rgb(30, 30, 34);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+img {
+  max-width: 28vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  cursor: default;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul li {
+  float: left;
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.home-btn {
+  background-color: rgb(60, 60, 60);
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  margin-right: 2px;
+}
+
+.mid-btn {
+  background-color: rgb(60, 60, 60);
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.last-btn {
+  background-color: rgb(60, 60, 60);
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  margin-left: 2px;
+}
+
+ul li a {
+  text-decoration: none;
+  color: whitesmoke;
+  display: block;
+}
+
+ul li a:hover {
+  background-color: cadetblue;
+}
+
+ul li ul li {
+  display: none;
+  background-color: rgb(48, 48, 48);
+}
+
+ul li:hover ul li {
+  display: block;
+  width: 196px;
+  margin-left: 2px;
+}
+
+.navigation-bar {
+  position: fixed;
+}
+
+.header-container {
+  margin: 0px;
+  width: 100vw;
+  height: 94px;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  border-bottom: solid 2px rgb(60, 60, 60);
+  background-image: linear-gradient(rgb(30, 30, 34), rgb(34, 34, 38));
+}
+
+.page-header {
+  color: whitesmoke;
+  margin: 5px;
+  margin-top: 30px;
+}
+
+.page-content-container {
+  margin-top: 90px;
+  width: 100vw;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.page-contents {
+  width: 50vw;
+  text-align: left;
+  color: whitesmoke;
+  background-color: rgb(34, 34, 38);
+}
+
+.page-contents p {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.page-contents h3 {
+  margin: 10px;
+  text-align: left;
+  cursor: default;
+}
+
+.page-contents a {
+  text-decoration: none;
+  color: aqua;
+}
+
+.page-contents q {
+  margin-left: 36px;
+  font-size: small;
+}
+
+.page-contents code {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: large;
+  background-color: rgb(52, 52, 52);
+}
+
+/* Inserting this collapsed row between two flex items will make
+ * the flex item that comes after it break to a new row */
+.break {
+  flex-basis: 100%;
+  height: 0;
+}
+
+.img-with-desc {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.img-with-desc p {
+  margin: 2px;
+  font-size: small;
+  text-align: center;
+}
+
+.img-with-desc img {
+  margin-bottom: 5px;
+}
+
+.prev-btn {
+  width: 8vw;
+  height: 3vh;
+  background-color: rgb(60, 60, 60);
+}
+
+.next-btn {
+  width: 8vw;
+  height: 3vh;
+  background-color: rgb(60, 60, 60);
+}
+
+.page-navigation-footer {
+  margin-top: 16px;
+  width: 16vw;
+  max-height: 3vh;
+}
+
+.footer-container {
+  margin: 0px;
+  width: 100vw;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+}
+
+.testimonial-container {
+  border: 2px solid rgb(60, 60, 60);
+  background-color: rgb(35, 37, 38);
+  border-radius: 5px;
+  padding: 2px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin: 16px 0;
+  max-width: 400px;
+  cursor: default;
+}
+
+.testimonial-container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.testimonial-container img {
+  float: left;
+  margin-right: 16px;
+  border-radius: 5px;
+}
+
+.testimonial-container span {
+  font-size: 20px;
+  margin-right: 15px;
+}
+
+.news-subscription-container {
+  margin-left: 16px;
+}
+
+#email-submit {
+  text-align: center;
+  padding: 5px;
+  min-width: 300px;
+  height: 28px;
+  border: 0;
+  border-radius: 2px;
+  background-color: rgb(60, 60, 60);
+  color: whitesmoke;
+}
+
+.news-subscription-container input[type=radio] {
+  border-radius: 2px;
+  background-color: rgb(60, 60, 60);
+  color: whitesmoke;
+}
+
+.radio-container {
+  cursor: default;
+}
+
+#submit-btn {
+  border: 0;
+  border-radius: 8px;
+  background-color: rgb(60, 60, 60);
+  color: whitesmoke;
+  width: 200px;
+  height: 40px;
+  cursor: pointer;
+}
+
+#submit-btn:hover {
+  background-color: cadetblue;
+}
+
+.save-btn {
+  min-width: 80px;
+  min-height: 20px;
+  padding: 4px 8px;
+  border-radius: 3px;
+  border: none;
+  text-align: center;
+  background-color: rgb(60, 60, 60);
+  color: whitesmoke;
+}
+
+.save-btn:hover {
+  background-color: cadetblue;
+  color: whitesmoke;
+}
+
+.page-save-btn {
+  min-width: 80px;
+  min-height: 20px;
+  margin: 0 10px;
+  padding: 4px 8px;
+  border-radius: 3px;
+  border: none;
+  text-align: center;
+  background-color: rgb(60, 60, 60);
+  color: whitesmoke;
+}
+
+.page-save-btn:hover {
+  background-color: cadetblue;
+  color: whitesmoke;
+}
+
+.image-source {
+  font-size: smaller;
+  text-align: center;
+  margin: 0 43%;
+}
+
+#empty-storage-header {
+  text-align: center;
+  margin-top: 35px;
+}
+
+#saved-image-header {
+  text-align: center;
+  margin-top: 35px;
+}
+
+#saved-article-header {
+  text-align: center;
+  margin-top: 35px;
+}
+
+#saved-OTHER-header {
+  text-align: center;
+  margin-top: 35px;
+}
+
+.hide-btn {
+  min-width: 80px;
+  min-height: 20px;
+  margin: 0 10px;
+  padding: 4px 8px;
+  border-radius: 3px;
+  border: none;
+  text-align: center;
+  background-color: rgb(60, 60, 60);
+  color: whitesmoke;
+}
+
+.hide-btn:hover {
+  background-color: cadetblue;
+  color: whitesmoke;
+}
+
+.btn-like-default {
+  padding: 4px 4px;
+  margin: 0 10px;
+  min-width: 80px;
+  min-height: 20px;
+  border-radius: 3px;
+  border: none;
+  text-align: center;
+  background-color: rgb(60, 60, 60);
+  color: whitesmoke;
+  cursor: pointer;
+}
+
+.btn-like-default:hover {
+  background-color: lightpink;
+  color: whitesmoke;
+}
+
+.btn-like-liked {
+  padding: 4px 4px;
+  margin: 0 10px;
+  min-width: 80px;
+  min-height: 20px;
+  border-radius: 3px;
+  border: none;
+  text-align: center;
+  background-color: rgb(255, 100, 100);
+  color: whitesmoke;
+  cursor: pointer;
+}
+
+.btn-like-liked:hover {
+  background-color: lightcoral;
+}
+
+#form-name {
+  margin: 0 10px;
+}
+
+#form-email {
+  margin: 0 10px;
+}
+
+#form-comment {
+  margin: 0 10px;
+}
+
+#form-submit {
+  padding: 4px 4px;
+  margin: 0 10px;
+  min-width: 80px;
+  min-height: 20px;
+  border-radius: 3px;
+  border: none;
+  text-align: center;
+  background-color: rgb(60, 60, 60);
+  color: whitesmoke;
+  cursor: pointer;
+}
+
+#form-submit:hover {
+  background-color: cadetblue;
+  color: whitesmoke;
+}
+
+label {
+  margin: 0 10px;
+}
+
+#contact-type-nav {
+  position: relative;
+  margin-bottom: 5px;
+}
+
+#contact-type-nav p {
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.dropdown-toggle {
+  padding: 4px 6px;
+  background: rgb(60, 60, 60);
+  max-width: 160px;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  background: rgb(60, 60, 60);
+}
+
+.dropdown li p {
+  display: block;
+  max-height: 20px;
+  cursor: pointer;
+}
+
+/* REFERENCES
+https://tobiasahlin.com/blog/flexbox-break-to-new-row/
+
+*//*# sourceMappingURL=style.css.map */
