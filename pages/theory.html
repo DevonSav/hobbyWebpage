@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Voxel Hobby Page - Theory</title>
+    <link rel="stylesheet" type="text/css" href="../styling/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="../scripts/jQuery.js"></script>  <!-- For jQuery functions-->
+    <script type="text/javascript" src="../scripts/main.js"></script>
+</head>
+<body onload="onPageLoad()">
+    <div class="header-container">
+        <div class="page-header">
+            <h1>General Theory</h1>
+            <button class="page-save-btn" onclick="savePageLink(articleName='General Theory')">Save This Article</button>
+        </div>
+    </div>
+
+    <div class="navigation-bar">
+        <ul>    <!--Make a list of all main navbar items-->
+            <li><a class="home-btn" href="index.html">Home</a></li>
+            <li><a class="mid-btn" href="theory.html">Theory</a>
+                <ul>    <!--Make a child list of all sub items-->
+                    <li><a href="theory.html#theory1">Face rendering</a></li>
+                    <li><a href="theory.html#theory2">Examples</a></li>
+                </ul>
+            </li>
+
+            <li><a class="mid-btn" href="optimisation.html">Optimisation</a>
+                <ul>
+                    <li><a href="optimisation.html#optimisation1">Greedy Meshing</a></li>
+                    <li><a href="optimisation.html#optimisation2">LOD Systems</a></li>
+                </ul>
+            </li>
+            <li><a class="mid-btn" href="saved_items.html">Saved Items</a></li>
+
+            <li><a class="last-btn" href="about.html">About / Contact</a></li>
+        </ul>
+    </div>
+
+    <!--ACTUAL PAGE CONTENTS-->
+    <br>
+    <div class="page-content-container">
+        <div class="page-contents">
+            <!--//// SECTION 1 ////-->
+            <h3>How can we display a voxel?</h3>
+            <button class="page-save-btn" onclick="savePageLink(articleName='Theory - How can we display a voxel?')">Save This Section</button>
+            <button class="btn-like-default" onclick="toggleLikeButton(this)">Like</button>
+
+            <p>This document will be covering how to render voxels using traditional geometry rendering with triangles.</p>
+            <p>The naive way of creating a scene is by using lots of cubes, however one issue that quickly arises using this method is performance.
+                A basic cube has six sides. Each side is what would be called a <i>'quad'</i>. Every quad is made up of two <i>triangles</i> and every triangle has 3 <i>vertices</i>.
+                This amounts to 12 triangles per cube.
+            </p>
+
+            <div class="img-with-desc">
+                <img class="content-img" id="local_img" src ="../images/voxel_tris.png" alt="A block with visible triangles.">
+                <div class="break"></div>
+                <p>This is a cube rendered using quads made up of triangles. Vertices are show with red points.</p>
+                <div class="break"></div>
+                <button class="save-btn" onclick="saveImgToLocalStorage(this, 'local_img', 'theory.html')">Save For Later</button>
+            </div>
+
+            <p>While this sounds small at first problems arise when we want to use many hundreds of thousands of blocks to make up our game world.
+                Suddenly we are dealing with a massive amounts of triangles (potentially billions) being processed by our computer. This is not efficient so how can we fix this?
+                The easiest method is to remove the sides we don't need in order to cut down the number of triangles.
+            </p>
+
+
+            <!--//// SECTION 2 ////-->
+            <br>
+            <h3 id="theory1">Reducing triangles</h3>
+            <button class="page-save-btn" onclick="savePageLink(articleName='Theory - Reducing triangles', articleTitle='theory.html#theory1')">Save This Section</button>
+            <button class="btn-like-default" onclick="toggleLikeButton(this)">Like</button>
+
+            <div class="img-with-desc">
+                <img class="content-img" id="local_img" src ="../images/2blocks_joined_hidden_face.png" alt="2 blocks with the internal face shown.">
+                <div class="break"></div>
+                <p>These are two blocks connected to each other. One block is transparent to show that the faces between them are preserved.</p>
+                <div class="break"></div>
+                <button class="save-btn" onclick="saveImgToLocalStorage(this, 'local_img', 'theory.html#theory1')">Save For Later</button>
+            </div>
+
+            <p>As you can see above, when two solid blocks are touching there are 4 unnecessary triangles between them(2 for each face quad).
+                If these sides can't be seen by the player we probably don't need to show them. So we can set up some logic which says:
+            </p>
+            <code>If one solid face is touching another solid face don't render it.</code>
+
+            <div class="img-with-desc">
+                <img class="content-img" id="local_img" src ="../images/2clear-cubes-with-interior.png" alt="2_cubes_with_internal_face" style="margin-bottom: 2px;">
+                <img class="content-img" id="local_img_two" src ="../images/2clear-cubes-no-interior.png" alt="2_cubes_no_internal_face" style="margin-top: 0;">
+                <div class="break"></div>
+                <p>These are two transparent connected blocks which show that the faces between them.</p>
+                <div class="break"></div>
+                <button class="save-btn" onclick="saveImgToLocalStorage(this, 'local_img_two', 'theory.html#theory1')">Save For Later</button>
+            </div>
+
+            <p>This leaves us with what is essentially a hollow shell where only outside faces of the cubes are shown.
+                Do this for every direction and we can basically remove the faces of all blocks surrounded by other solid blocks, like those found underground.
+                This will easily reduce the number of faces(and their triangles) by half, if not more.
+            </p>
+
+            <!--//// SECTION 3 ////-->
+            <br>
+            <h3 id="theory2">Practical examples</h3>
+            <button class="page-save-btn" onclick="savePageLink(articleName='Theory - Practical examples', articleTitle='theory.html#theory2')">Save This Section</button>
+            <button class="btn-like-default" onclick="toggleLikeButton(this)">Like</button>
+
+            <div class="img-with-desc">
+                <img class="content-img" id="local_img" src ="../images/world-no-hidden-faces-outline.png" alt="world_with_no_hidden_faces" style="margin-bottom: 2px;">
+                <img class="content-img" id="local_img_two" src ="../images/world-hidden-faces-outline.png" alt="world_with_hidden_faces" style="margin-top: 0;">
+                <div class="break"></div>
+                <p>Rendering of a small cross section of the world with and without hidden faces. The edge of the cross section is shown with colored outlines.</p>
+                <div class="break"></div>
+                <button class="save-btn" onclick="saveImgToLocalStorage(this, 'local_img_two', 'theory.html#theory2')">Save For Later</button>
+            </div>
+            <p>This is from my own work-in-progress voxel engine. Note that faces can only be seen from one side(think one-way stickers on windows), simply due to how they are rendered.
+                As you can imagine the reduction of faces is quite large.
+            </p>
+            <br>
+            <br>
+
+            <!--//// COMMENT FORM ////-->
+            <p>Did you enjoy this article?</p>
+            <button class="btn-like-default" onclick="toggleLikeButton(this)">Like</button>
+
+            <h3 id="theory3">Write a comment!</h3>
+            <form>
+                <label for="form-name">Your name:</label><br>
+                <input type="text" id="form-name" name="name" placeholder="Name">
+                <br>
+
+                <label for="form-email">Email:</label><br>
+                <input type="text" id="form-email" name="email" placeholder="example@gmail.com">
+                <br>
+
+                <label for="form-comment">Comment:</label><br>
+                <textarea cols="50" rows="8" id="form-comment" name="comment" placeholder="Type your comment here."></textarea>
+                <br>
+
+                <input type="submit" id="form-submit" value="Submit">
+            </form>
+            <br><br><br><br>
+
+        </div>
+    </div>
+
+    <br>
+    <div class="footer-container">
+        <div class="page-navigation-footer">
+            <ul>
+                <li><a class="prev-btn" href="index.html">Previous Page</a></li>
+                <li><a class="next-btn" href="optimisation.html">Next Page</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
