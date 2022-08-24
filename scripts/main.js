@@ -114,6 +114,8 @@ function saveImgToLocalStorage(saveButton, imageID, sourcePage = null)
     );
 
     savedImagesArray.push(newSavedItem);  // Add it to the array
+
+    let totalItems = savedImagesArray.length + savedArticlesArray.length + savedSectionsArray.length;
     alert("There are currently " + savedImagesArray.length + " images saved to your storage.\n" + totalItems + " items in total.");
     localStorage.setItem("saved_images", JSON.stringify(savedImagesArray)); // Save to local storage
 }
